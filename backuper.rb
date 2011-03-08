@@ -16,7 +16,7 @@ end
 filename = "#{backup_dir}/#{file_prefix}#{Time.new.strftime( date_format )}.sql"
 included_arguments = %W[--compact --skip-triggers --no-create-info]
 arguments = included_arguments.join( ' ' )
-command = "mysqldump --user=#{username} --password=#{password} #{arguments} #{database} > #{filename}"
+command = "mysqldump --user=#{username} --password=\"#{password}\" #{arguments} #{database} > #{filename}"
 system command
 
 if (File.exists?( filename ))
